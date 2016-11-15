@@ -15,15 +15,28 @@ shinyUI(navbarPage('Electoral College',
                                 selectInput('mapvar', label = 'Variable to Map', choices = list("Population" = 'population', 'Electoral Votes' = 'votes', 'Votes / Population' = 'ratio'))
                               ),
                               
+                              
                               # Main panel: display plotly map
                               mainPanel(
                                 plotlyOutput('map')
                               )
                             )
-                   ) 
+                   ), 
                    
                    # Create a tabPanel to show your scatter plot
-                   
+                   tabPanel('Scatter',
+                     titlePanel('Population v.s. Vote Power'),
+                     sidebarLayout(
+                       sidebarPanel(
+                         textInput('search', label = 'search for a state', value = '')
+                         
+                       )
+                       
+                     ),
+                     mainPanel(
+                       plotlyOutput('scatter')
+                     )
+                   )))
                             # Add a titlePanel to your tab
                    
                             
@@ -38,4 +51,4 @@ shinyUI(navbarPage('Electoral College',
                               
                               # Create a main panel, in which you should display your plotly Scatter plot
                               
-))
+
